@@ -123,7 +123,7 @@ export default class Todo extends Component {
             <div>
                 {currentTutorial ? (
                     <div className ="edit-form">
-                    <h4>Tutorial</h4>
+                    <h4>Todo</h4>
                     <form>
                         <div className="form-group">
                             <label htmlFor = "title">Title</label>

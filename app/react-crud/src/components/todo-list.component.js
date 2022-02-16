@@ -129,7 +129,7 @@ export default class TodoList extends Component{
                     </div>
                 </div>
                 <div className="col-md-6">
-                    <h4>Tutorial List</h4>
+                    <h4>Todo List</h4>
                     <ul className="list-group">
                         {tutorials &&
                             tutorials.map((tutorial,index)=>(
