@@ -16,7 +16,8 @@ export default class Todo extends Component {
                 id: null,
                 title: "",
                 description: "",
-                published: false
+                published: false,
+                priority: false
             },
             message: ""
         };
@@ -86,6 +87,7 @@ export default class Todo extends Component {
         });
     }
 
+
     updateTutorial() {
         TodoListDataService.update(
             this.state.currentTutorial.id,
@@ -112,6 +114,7 @@ export default class Todo extends Component {
             console.log(e);
         });
     }
+
 
     render() {
         const { currentTutorial } = this.state;

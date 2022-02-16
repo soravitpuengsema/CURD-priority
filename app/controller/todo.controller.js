@@ -13,7 +13,8 @@ exports.create = (req, res) => {
     const todo = {
         title: req.body.title,
         description: req.body.description,
-        published: req.body.published ? req.body.published :false
+        published: req.body.published ? req.body.published :false,
+        priority: req.body.priority ? req.body.priority :false
     };
 
     todo_list.create(todo)

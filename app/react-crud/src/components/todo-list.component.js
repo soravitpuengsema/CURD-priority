@@ -1,6 +1,8 @@
 import React,{Component} from "react";
 import TodoListDataService from "../services/todo.service";
 import {Link} from "react-router-dom";
+import goldstar from "./goldstar.png";
+import blackstar from "./blackstar.png";
 
 export default class TodoList extends Component{
     constructor(props){
@@ -11,6 +13,8 @@ export default class TodoList extends Component{
         this.setActiveTutorial = this.setActiveTutorial.bind(this);
         this.removeAllTutorials = this.removeAllTutorials.bind(this);
         this.searchTitle = this.searchTitle.bind(this);
+        this.updatePriority = this.updatePriority.bind(this);
+
         this.state ={
             tutorials:[],
             currentTutorial: null,
@@ -81,6 +85,25 @@ export default class TodoList extends Component{
             console.log(e);
         });
     }
+
+    updatePriority(tutorial) {
+        var data = {
+            id: tutorial.id,
+            title: tutorial.title,
+            desciption: tutorial.description,
+            published: tutorial.published,
+            priority: !tutorial.priority
+        };
+        TodoListDataService.update(tutorial.id, data)
+        .then(response => {
+            console.log(response.data);
+            this.refreshList();
+        })
+        .catch(e => {
+            console.log(e);
+        });
+    }
+
     render(){
         const {searchTitle,tutorials,currentIndex,currentTutorial} = this.state;
         return(
@@ -110,15 +133,30 @@ export default class TodoList extends Component{
                     <ul className="list-group">
                         {tutorials &&
                             tutorials.map((tutorial,index)=>(
-                               <li
+                                <li
                                 className={"list-group-item"+
-                                (index === currentIndex ? "active":"")
+                                (index === currentIndex ? " active":"")
                                 }
                                 onClick={()=> this.setActiveTutorial(tutorial,index)}
                                 key={index}
                                 >
-                                   {tutorial.title}
-                               </li> 
+                                {tutorial.priority ? (
+                                    <button
+                                    className={"star"}
+                                    onClick={() => this.updatePriority(tutorial)}
+                                    >
+                                    <img src={goldstar} style={{width:20,heigth:20}}/>
+                                    </button>
+                                ) : (
+                                    <button
+                                    className={"star"}
+                                    onClick={() => this.updatePriority(tutorial)}
+                                    >
+                                    <img src={blackstar} style={{width:20,heigth:20}}/>
+                                    </button>
+                                )}
+                                {tutorial.title}
+                                </li> 
                             ))}
                     </ul>
                     <button 
@@ -150,6 +188,12 @@ export default class TodoList extends Component{
                                     <strong>Status:</strong>
                                 </label>{" "}
                                 {currentTutorial.published ? "Published": "Pending"}
+                            </div>
+                            <div>
+                                <label>
+                                    <strong>Priority:</strong>
+                                </label>{" "}
+                                {currentTutorial.priority ? "True": "False"}
                             </div>
                             <Link
                              to={"/todo/"+currentTutorial.id}

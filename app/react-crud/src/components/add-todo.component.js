@@ -14,6 +14,7 @@ export default class AddTodo extends Component {
             title: "",
             description: "",
             published: false,
+            priority: false,
             summitted: false
         };
     }
@@ -43,6 +44,7 @@ export default class AddTodo extends Component {
                     title: response.data.title,
                     description: response.data.description,
                     published: response.data.published,
+                    priority: response.data.priority,
                     summitted: true
                 });
                 console.log(response.data);
@@ -57,7 +59,8 @@ export default class AddTodo extends Component {
             id: null,
             title: "",
             description: "",
-            published: false,
+            published: false,      
+            priority: false,
 
             summitted: false
         });
