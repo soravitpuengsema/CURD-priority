@@ -142,6 +142,7 @@ export default class TodoList extends Component{
                                 >
                                 {tutorial.priority ? (
                                     <button
+                                    id = {"gold"}
                                     className={"star"}
                                     onClick={() => this.updatePriority(tutorial)}
                                     >
@@ -149,6 +150,7 @@ export default class TodoList extends Component{
                                     </button>
                                 ) : (
                                     <button
+                                    id = {"black"}
                                     className={"star"}
                                     onClick={() => this.updatePriority(tutorial)}
                                     >
