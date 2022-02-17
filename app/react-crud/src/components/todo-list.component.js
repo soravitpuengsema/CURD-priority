@@ -39,6 +39,7 @@ export default class TodoList extends Component{
         .then(response =>{
             this.setState({
                 tutorials:response.data
+                .sort((a,b) => (a.priority > b.priority) ? -1 : 1)
             });
             console.log(response.data);
         })
