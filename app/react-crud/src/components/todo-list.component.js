@@ -141,6 +141,7 @@ export default class TodoList extends Component{
                                 onClick={()=> this.setActiveTutorial(tutorial,index)}
                                 key={index}
                                 >
+                                <div>
                                 {tutorial.priority ? (
                                     <button
                                     id = {"gold"}
@@ -159,6 +160,7 @@ export default class TodoList extends Component{
                                     </button>
                                 )}
                                 {tutorial.title}
+                                </div>
                                 </li> 
                             ))}
                     </ul>
