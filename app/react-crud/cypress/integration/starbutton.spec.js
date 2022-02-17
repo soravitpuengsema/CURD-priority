@@ -1,6 +1,6 @@
 describe("TEST STAR BUTTON",() => {
     beforeEach(() => {
-        cy.visit("/")
+        cy.visit("localhost:3000")
     })
 
     it("STAR VALUE SHOULD BE ZERO",() => {
