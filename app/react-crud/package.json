@@ -9,6 +9,7 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "cypress": "^9.5.0",
+    "lighthouse": "^9.4.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-icons": "^4.3.1",
@@ -39,5 +40,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "cypress-audit": "^1.1.0"
   }
 }
